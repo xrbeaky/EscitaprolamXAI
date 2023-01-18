@@ -112,16 +112,15 @@ function generatePatients(amount){
 }
 
 function predictRemission(predictors){
-    
-    
-    //standardize
     let predictorsStd = divideArray(subtractArray(predictors, meanGENDEP), sdGENDEP);
-    //mult by coefficient
     let logit = weirdCoefficient + sumArray(multiplyArray(predictorsStd, modelCoefficients));
-    //s-curve
     remission = exp(logit) /  (1 + exp(logit));
 
     return remission;
+}
+
+function downloadPatientData(){
+    return(toCSV(generatePatients(10)));
 }
 
 function toCSV(data)
@@ -143,13 +142,4 @@ function csvToArray(data){
     return(array);
 }
 
-
-
-
-//To-do:
-//[X]add variables from the code
-//[X]add coefficient lists
-//[X]refactor the actual model into javascript
-//[X]generate a bunch of fake patients, save file with JSON?
-//[]plug into both models
-//[]compare the results 
+console.log(predictRemission(generatePatients(1)[0]));
