@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Idk what I'm doing</h1>
+
+    <button type="button" id ="btnDownloadCSV">Download CSV</button>
+
+    <script src = "index.html"></script>
+    <script>
+        const btnDownloadCSV = document.getElementById("btnDownloadCSV");
+
+        btnDownloadCSV.addEventListener("click", ()=> {
+            downloadCSV("TestPatientData", downloadPatientData());
+        });
+
+        function downloadCSV(filename, csvData){
+            const element = document.createElement("a");
+            element.setAttribute("href", `${csvData}`);
+            element.setAttribute("download", filename);
+            element.style.display = "none";
+
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        };
+
+    </script>    
+</body>
+</html>
