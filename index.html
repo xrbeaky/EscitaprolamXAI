@@ -7,16 +7,29 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Idk what I'm doing</h1>
+    <h1>Escitaprolam Remission Predictor Test</h1>
 
-    <button type="button" id ="btnDownloadCSV">Download CSV</button>
+    <button type="button" id ="btnDownloadPatientCSV">Download Patient Data</button>
+    <form id="formUploadCSV">
+        <input type="file" id="csvFile" accept=".csv" />
+        <br />
+        <input type="submit" value="Submit" /></form>
+    <button type="button" id ="btnDownloadPredictionCSV">Download Patient Predictions</button>
 
-    <script src = "main.js"></script>
+    <script src = "predictor.js"></script>
+    <script src = "generator.js"></script>
     <script>
-        const btnDownloadCSV = document.getElementById("btnDownloadCSV");
+        const btnDownloadPatientCSV = document.getElementById("btnDownloadPatientCSV");
+        const btnDownloadPredictionCSV = document.getElementById("btnDownloadPredictionCSV");
+        const formUploadCSV = document.getElementById("formUploadCSV");
+        const csvFile = document.getElementById("csvFile");
 
-        btnDownloadCSV.addEventListener("click", ()=> {
+        btnDownloadPatientCSV.addEventListener("click", ()=> {
             downloadCSV("TestPatientData", downloadPatientData());
+        });
+
+        btnDownloadPredictionCSV.addEventListener("click", ()=> {
+            downloadCSV("TestPatientPredictions", downloadPatientPredictions());
         });
 
         function downloadCSV(filename, csvData){
@@ -29,6 +42,22 @@
             element.click();
             document.body.removeChild(element);
         };
+
+        formUploadCSV.addEventListener("submit", function (e) {
+         e.preventDefault();
+         read(csvToArray);
+        });
+
+        function read(callback) {
+            const file = csvFile.files[0];
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                callback(reader.result);
+            }
+
+            reader.readAsText(file);
+        }
     </script>    
 </body>
 </html>

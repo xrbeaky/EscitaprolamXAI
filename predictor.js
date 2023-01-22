@@ -19,6 +19,8 @@ let rs76557116 = 0;
 let rs9557363 = 0;
 let rs2704022 = 0;
 
+let currentPatientData;
+
 let modelPredictors = [appetiteDimension,bdi_16,rs62182022,interestActivityDimension,hrsdTotal,scanFatigabilityDimension,rs1392611,rs10812099,
 rs1891943,hrsd_13,rs9557363,rs151139256,rs28373080,rs7757702,rs76557116,rs11002001,rs2704022];
 const weirdCoefficient = -0.018595926;
@@ -84,33 +86,6 @@ function randomInt(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function generatePatients(amount){
-    let patients = []
-    
-    for (let i = 0; i < amount; i++){
-        let patientData = [];
-        patientData[0] = randomInt(0, 2); //appetiteDimension ? (0-2)
-        patientData[1] = randomInt(0, 2); //bdi-16 0-2
-        patientData[2] = randomInt(0, 2); //rs62182022 0-2
-        patientData[3] = randomInt(0, 2); //interestActivityDimension ? (0-2)
-        patientData[4] = randomInt(0, 52); //hrsdTotal 0-52
-        patientData[5] = randomInt(0, 2); //scanFatigabilityDimension ? (0-2)
-        patientData[6] = randomInt(0, 2); //rs1392611
-        patientData[7] = randomInt(0, 2); //rs10812099
-        patientData[8] = randomInt(0, 2); //rs1891943
-        patientData[9] = randomInt(0, 2); //hrsd_13 0-2
-        patientData[10] = randomInt(0, 2); //rs9557363
-        patientData[11] = randomInt(0, 2); //rs151139256
-        patientData[12] = randomInt(0, 2); //rs28373080
-        patientData[13] = randomInt(0, 2); //rs7757702
-        patientData[14] = randomInt(0, 2); // rs76557116
-        patientData[15] = randomInt(0, 2); // rs11002001
-        patientData[16] = randomInt(0, 2); // rs2704022
-        patients[i] = patientData;
-    }
-    return patients;
-}
-
 function predictRemission(predictors){
     let predictorsStd = divideArray(subtractArray(predictors, meanGENDEP), sdGENDEP);
     let logit = weirdCoefficient + sumArray(multiplyArray(predictorsStd, modelCoefficients));
@@ -119,27 +94,30 @@ function predictRemission(predictors){
     return remission;
 }
 
-function downloadPatientData(){
-    return(toCSV(generatePatients(10)));
+function csvToArray(str, delimiter = ",") {
+   let output = new Array();
+   let rows = str.split("\n");
+   for(let i = 0; i < rows.length; i++){
+        let column = rows[i].replace('\r', "").split(",");
+        output[i] = column;
+   }
+
+   for(let r = 0; r < output.length; r++){
+    for(let c = 0; c < 16; r++){
+        output[r][c] = parseInt(output[r][c]);
+    }
+   }
+   console.log(output);
+   currentPatientData = output;
 }
 
-function toCSV(data)
-{
-    let csvContent = "data:text/csv;charset=utf-8,";
-    data.forEach(function(rowArray){
-        let row = rowArray.join(",");
-        csvContent += row + "\r\n";
-    });
-
-    return csvContent;
-}
-
-function csvToArray(data){
-    let array = data.split("\\n").map(function (line) {
-        return line.split(",");
-    });
+function downloadPatientPredictions(){
+    let output = new Array();
+    for(let i = 0; i < currentPatientData.length; i++){
+        output[i] = predictRemission(currentPatientData[i]);
+    }
     
-    return(array);
+    return(arraysToCSV(output));
 }
 
-console.log(predictRemission(generatePatients(1)[0]));
+
