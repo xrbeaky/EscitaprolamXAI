@@ -98,14 +98,12 @@ function csvToArray(str, delimiter = ",") {
    let output = new Array();
    let rows = str.split("\n");
    for(let i = 0; i < rows.length; i++){
-        let column = rows[i].replace('\r', "").split(",");
-        output[i] = column;
-   }
-
-   for(let r = 0; r < output.length; r++){
-    for(let c = 0; c < 16; r++){
-        output[r][c] = parseInt(output[r][c]);
-    }
+        let intArray = new Array();
+        let strArray = rows[i].replace('\r', "").split(",");
+        for(let c = 0; c < strArray.length; c++){
+            intArray[c] = parseInt(strArray[c]);
+        }
+        output[i] = intArray;
    }
    console.log(output);
    currentPatientData = output;
@@ -117,7 +115,8 @@ function downloadPatientPredictions(){
         output[i] = predictRemission(currentPatientData[i]);
     }
     
-    return(arraysToCSV(output));
+    console.log(output);
+    return(arrayToCSV(output));
 }
 
 

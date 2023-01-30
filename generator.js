@@ -35,6 +35,14 @@ function arraysToCSV(data)
 
     return csvContent;
 }
+function arrayToCSV(data)
+{
+    let csvContent = "data:text/csv;charset=utf-8,";
+    for(let i = 0; i < data.length; i++){
+        csvContent += "" + data[i] + "\n";
+    }
+    return csvContent;
+}
 
 function downloadPatientData(){
     return(arraysToCSV(generatePatients(1000)));
