@@ -19,7 +19,6 @@ function generatePatient(amount){
         patientData[14] = randomInt(0, 2); // rs76557116
         patientData[15] = randomInt(0, 2); // rs11002001
         patientData[16] = randomInt(0, 2); // rs2704022
-        patients[i] = patientData;
     }
     return patientData;
 }
@@ -43,9 +42,7 @@ function arraysToCSV(data)
 function arrayToCSV(data)
 {
     let csvContent = "data:text/csv;charset=utf-8,";
-    for(let i = 0; i < data.length; i++){
-        csvContent += "" + data[i] + "\n";
-    }
+    csvContent += data.join(",");
     return csvContent;
 }
 

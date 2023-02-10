@@ -81,11 +81,7 @@ function sumArray(a1){
 function exp(num){
     return Math.E ** num;
 }
-function randomInt(min, max){
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+
 
 function predictRemission(predictors){
     let predictorsStd = divideArray(subtractArray(predictors, meanGENDEP), sdGENDEP);
@@ -120,13 +116,7 @@ function csvToArray(str, delimiter = ",") {
 }
 
 function downloadPatientPredictions(){
-    let output = new Array();
-    for(let i = 0; i < currentPatientData.length; i++){
-        output[i] = predictRemission(currentPatientData[i]);
-    }
-    
-    console.log(explain(currentPatientData[0]));
-    return(arrayToCSV(output));
+    return("data:text/csv;charset=utf-8," + predictRemission(currentPatientData));
 }
 
 

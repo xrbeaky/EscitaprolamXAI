@@ -9,37 +9,33 @@
 <body>
     <h1>Escitaprolam Remission Predictor Test</h1>
 
-    <!--
     <button type="button" id ="btnDownloadPatientCSV">Download Patient Data</button>
-    <button type="button" id ="btnDownloadPredictionCSV">Download Patient Predictions</button>
-    -->
     
-    <p> Attach patient CSV </p>
     <form id="formUploadCSV">
         <input type="file" id="csvFile" accept=".csv" />
         <br />
         <input type="submit" value="Submit" /></form>
     
+    <button type="button" id ="btnDownloadPredictionCSV">Download Patient Predictions</button>
 
     <script src = "predictor.js"></script>
     <script src = "generator.js"></script>
     <script src = "explainer.js"></script>
     <script>
-        //const btnDownloadPatientCSV = document.getElementById("btnDownloadPatientCSV");
-        //const btnDownloadPredictionCSV = document.getElementById("btnDownloadPredictionCSV");
+        btnDownloadPatientCSV = document.getElementById("btnDownloadPatientCSV");
+        btnDownloadPredictionCSV = document.getElementById("btnDownloadPredictionCSV");
         const formUploadCSV = document.getElementById("formUploadCSV");
         const csvFile = document.getElementById("csvFile");
 
-        /*btnDownloadPatientCSV.addEventListener("click", ()=> {
+        btnDownloadPatientCSV.addEventListener("click", ()=> {
             downloadCSV("TestPatientData", downloadPatientData());
-        });*/
+        });
 
-        /*
         btnDownloadPredictionCSV.addEventListener("click", ()=> {
             downloadCSV("TestPatientPredictions", downloadPatientPredictions());
-        });*/
+        });
 
-        /*function downloadCSV(filename, csvData){
+        function downloadCSV(filename, csvData){
             const element = document.createElement("a");
             element.setAttribute("href", `${csvData}`);
             element.setAttribute("download", filename);
@@ -48,7 +44,7 @@
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
-        };*/
+        };
 
         formUploadCSV.addEventListener("submit", function (e) {
          e.preventDefault();
