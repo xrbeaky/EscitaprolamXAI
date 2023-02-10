@@ -1,8 +1,7 @@
-function generatePatients(amount){
-    let patients = []
-    
+function generatePatient(amount){
+    let patientData = [];
     for (let i = 0; i < amount; i++){
-        let patientData = [];
+        
         patientData[0] = randomInt(0, 2); //appetiteDimension ? (0-2)
         patientData[1] = randomInt(0, 2); //bdi-16 0-2
         patientData[2] = randomInt(0, 2); //rs62182022 0-2
@@ -22,7 +21,13 @@ function generatePatients(amount){
         patientData[16] = randomInt(0, 2); // rs2704022
         patients[i] = patientData;
     }
-    return patients;
+    return patientData;
+}
+
+function randomInt(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function arraysToCSV(data)
@@ -45,5 +50,5 @@ function arrayToCSV(data)
 }
 
 function downloadPatientData(){
-    return(arraysToCSV(generatePatients(1000)));
+    return(arrayToCSV(generatePatient(1)));
 }
