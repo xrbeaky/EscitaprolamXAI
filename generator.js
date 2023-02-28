@@ -1,12 +1,14 @@
+
+
+//generate normally distributed values
 function generatePatient(amount){
     let patientData = [];
     for (let i = 0; i < amount; i++){
-        
         patientData[0] = randomInt(0, 2); //appetiteDimension ? (0-2)
         patientData[1] = randomInt(0, 2); //bdi-16 0-2
         patientData[2] = randomInt(0, 2); //rs62182022 0-2
         patientData[3] = randomInt(0, 2); //interestActivityDimension ? (0-2)
-        patientData[4] = randomInt(0, 52); //hrsdTotal 0-52
+        patientData[4] = randomInt(0,52); //hrsdTotal 0-52
         patientData[5] = randomInt(0, 2); //scanFatigabilityDimension ? (0-2)
         patientData[6] = randomInt(0, 2); //rs1392611
         patientData[7] = randomInt(0, 2); //rs10812099
