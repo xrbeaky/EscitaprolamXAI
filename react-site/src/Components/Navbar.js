@@ -8,9 +8,9 @@ export default function Navbar(){
             <img className = "nav-logo" src={logo}></img>
             <h3 className = "nav-logo_text">Escitalopram Remission Predictor</h3>
             <ul className = "nav-buttons">
-                <Link to="/">Input</Link>
-                <Link to="/results">Results</Link>
-                <Link to="/explanation">Why?</Link>
+                <Link className = "link-button" to="/">Input</Link>
+                <Link className = "link-button" to="/results">Results</Link>
+                <Link className = "link-button" to="/explanation">Why?</Link>
             </ul>
         </nav>
     );

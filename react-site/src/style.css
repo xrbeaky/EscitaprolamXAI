@@ -70,8 +70,16 @@ body{
     margin: 0;
 }
 
-.nav-buttons{
-    color : white;
+.link-button{
+    font-size: 30px;
+    display : inline-block;
+    margin-right: 40px;
+    padding: 0.5rem 1rem;
+    color :white;
+    text-decoration: none;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
     font-weight: 600;
 }
 
@@ -80,10 +88,11 @@ body{
 }
 
 .nav-logo_text{
+    padding-left:20px;
     margin-right: auto;
     color : white;
     font-weight: 700;
-    font-size : 22px;
+    font-size : 35px;
 }
 
 .nav-logo {
