@@ -1,17 +1,20 @@
-import React from 'react';
-
-let formResponses = [];
+import React, {useState} from 'react';
+import Navbar, {setIsButtonActive} from './Navbar.js';
+export let formResponses = [];
 
 export default function Input(){
     return(
         <main>
             <h1 className = "main-title">Input</h1>
             <ul className = "main-container">
-                <h3 className = "main-h3">This questionnaire is designed to be completed alongside a clinician interview. For each of the following, select the scale that best represents the patient's feelings:</h3>
+                <h2 className = "main-h2">This questionnaire is designed to be completed alongside a clinician interview. For each of the following, select the scale that best represents the patient's feelings:</h2>
+                <h1 className = "main-h1">Hamilton Depression Rating Scale (17 Questions)</h1>
+                <hr className = "main-divider"/>
+                <h3 className = "main-h3">This section contains the HDRS-17, a widely used clincian administered depression assessment scale.</h3>
                 <Question 
                 index = "1" 
                 question = "Depressed Mood (sadness, hopeless, helpless, worthless)"
-                answers = {["Absent", "These feeling states indicated only on questioning.", "These feeling states spontaneously reported verbally.", "Communicates feeling states non-verbally, i.e. through facial expression, posture, voice, and tendency to weep.", "Patient reports virtually only these feeling states in his/her spontaneous verbal and non-verbal communication."]}/>
+                answers = {["Absent", "These feelings indicated only on questioning.", "These feelings spontaneously reported verbally.", "Communicates feelings non-verbally, i.e. through facial expression, posture, voice, and tendency to weep.", "Patient reports virtually only these feeling states in his/her spontaneous verbal and non-verbal communication."]}/>
                 <Question 
                 index = "2" 
                 question = "Feelings of Guilt"
@@ -35,7 +38,7 @@ export default function Input(){
                 <Question 
                 index = "7" 
                 question = "Work and Activities"
-                answers = {["No difficulty.","Thoughts and feelings of incapacity, fatigue, or weakness.", "Loss of interest in activities, hobbies, or work (feels they have to push themselves).", "Decrease in actual time spent or decrease in productivity. Less than 3 hours a day doing work or hobbies.", "Stopped working because of illness, engages in no activities."]}/>
+                answers = {["No difficulty.","Thoughts and feelings of incapacity, fatigue, or weakness.", "Loss of interest in activities, hobbies, or work (feels they have to push themselves).", "Decrease in actual time spent or decrease in productivity. Less than 3 hours a day doing work or hobbies.", "Stopped working because of illness, little to no activities."]}/>
                 <Question 
                 index = "8" 
                 question = "Mental Abilities (thought and speech, concentration, motor activity)"
@@ -57,9 +60,88 @@ export default function Input(){
                 question = "Somatic Symptoms: Gastro-intestinal"
                 answers = {["None.","Loss of appetite but eats without encouragement. Heavy feeling in abdomen.", "Difficulty eating without urging, requests medication for gastro-intestinal symptoms."]}/>
                 <Question 
-                index = "12" 
-                question = "Somatic Symptoms: Gastro-intestinal"
-                answers = {["None.","Loss of appetite but eats without encouragement. Heavy feeling in abdomen.", "Difficulty eating without urging, requests medication for gastro-intestinal symptoms."]}/>
+                index = "13" 
+                question = "Somatic Symptoms: General"
+                answers = {["None.","Heaviness in limbs, back, or head. Backaches, headaches, muscle aches. Lack of energy.", "Any distinct symptom."]}/>
+                <Question 
+                index = "14" 
+                question = "Genital Symptoms (loss of libido, menstrual disturbances, etc.)"
+                answers = {["Absent.","Mild.", "Severe."]}/>
+                <Question 
+                index = "15" 
+                question = "Hypochondriasis"
+                answers = {["Absent.","Self-absorption (bodily).", "Preoccupation with health.", "Frequent complaints, requests for help, etc.", "Hypochondrial delusions."]}/>
+                <Question 
+                index = "16" 
+                question = "Weight Loss"
+                answers = {["No weight loss.","Probable weight loss associated with illness.", "Definite weight loss.", "Not assessed."]}/>
+                <Question 
+                index = "17" 
+                question = "Insight"
+                answers = {["Acknowledges being depressed and ill.","Acknowledges illness but attributes to bad food, climate, overwork, virus, etc.", "Denies being ill."]}/>
+                <h1 className = "main-h1">Miscellaneous Clinical Factors (4 Questions):</h1>
+                <hr className = "main-divider"/>
+                <Question 
+                index = "18" 
+                question = "Changes in Sleep (Beck Depression Inventory)"
+                answers = {["I can sleep as well as usual.","I don't sleep as well as I used to.", "I wake up 1-2 hours earlier than usual, find it hard to get back to sleep.", "I wake up several hours earlier and can't get back to sleep."]}/>
+                <Question 
+                index = "19" 
+                question = "Fatigability (Schedules for Clincal Assessment in Neuropsychiatry)"
+                answers = {["No fatigability.","Minor.","Present", "Severe."]}/>
+                <NumberInput 
+                index = "20"
+                question = "Enter your interest-activity dimension score from: "/>
+                <NumberInput 
+                index = "21"
+                question = "Enter your 'appetite' dimension score from: "/>
+                <h1 className = "main-h1">Genetic Factors (11 Questions)</h1>
+                <hr className = "main-divider"/>
+                <h3 className = "main-h3">Select your single nucleotide polymorphism variants for the following:</h3>
+                <Question 
+                index = "22" 
+                question = "rs1392611"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "23" 
+                question = "rs10812099"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "24" 
+                question = "rs1891943"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "25" 
+                question = "rs151139256"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "26" 
+                question = "rs11002001"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "27" 
+                question = "rs62182022"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "28" 
+                question = "rs28373080"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "29" 
+                question = "rs7757702"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "30" 
+                question = "rs76557116"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "31" 
+                question = "rs9557363"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
+                <Question 
+                index = "32" 
+                question = "rs2704022"
+                answers = {["Homozygous for minor allele.","Heterozygous.", "Homozygous for major allele."]}/>
             </ul>
         </main>
     )
@@ -77,16 +159,36 @@ function Question(props)
     )
 }
 
+function setFormResponses(index, value){
+    formResponses[index] = value;
+}
+
+
+function NumberInput(props)
+{
+    const [numberValue, setNumberValue] = useState(0);
+    const handleNumberChange = (event) =>{
+        setNumberValue(event.target.value);
+        setFormResponses(props.index -1, event.target.value);
+    }
+    return(
+        <div>
+            <h2>{props.index}. {props.question} <a href="https://google.com">Link to Study</a></h2>
+            <div className = "input-list">
+                <input className = "input-number" type = "number" value={numberValue} onChange={handleNumberChange}/>
+            </div>
+        </div>
+    )
+}
+
+
 function UserInput(props){
     const handleClick = (event, i) =>{
+        setFormResponses(props.index-1, i);
+
         const clickedButton = event.target;
-
-        formResponses[props.index - 1] = i
-        console.log(formResponses);
-
         const buttonsInGroup = Array.from(clickedButton.parentNode.parentNode.querySelectorAll("button"));
         buttonsInGroup.forEach(button => {
-            console.log("Button found!");
             if (button !== clickedButton) {
               button.classList.remove('form-button-selected');
               button.classList.add('form-button-unselected');
@@ -96,9 +198,8 @@ function UserInput(props){
                 button.classList.add('form-button-selected');
             }
           });
-
-          
     }
+
     return(
         <div className = "input-container">
             {

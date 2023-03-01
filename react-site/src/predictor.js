@@ -33,7 +33,7 @@ export const sdGENDEP = [0.6302054,0.9329961,0.5628087,0.7176169,5.8649321,0.824
 export let currentPatientData;
 
 function subtractArray(a1, a2){
-    if(a1.length == a2.length){
+    if(a1.length === a2.length){
         let output = [];
         for(let i = 0; i < a1.length; i++){
             output[i] = a1[i] - a2[i];
@@ -46,7 +46,7 @@ function subtractArray(a1, a2){
     }
 }
 function divideArray(a1, a2){
-    if(a1.length == a2.length){
+    if(a1.length === a2.length){
         let output = [];
         for(let i = 0; i < a1.length; i++){
             output[i] = a1[i] / a2[i];
@@ -59,7 +59,7 @@ function divideArray(a1, a2){
     }
 }
 function multiplyArray(a1, a2){
-    if(a1.length == a2.length){
+    if(a1.length === a2.length){
         let output = [];
         for(let i = 0; i < a1.length; i++){
             output[i] = a1[i] * a2[i];
@@ -91,7 +91,7 @@ export function predictRemission(predictors){
 }
 
 function csvToArrays(str, delimiter = ",") {
-   let output = new Array();
+   let output = [];
    let rows = str.split("\n");
    for(let i = 0; i < rows.length; i++){
         let intArray = new Array();
@@ -105,7 +105,7 @@ function csvToArrays(str, delimiter = ",") {
 }
 
 function csvToArray(str, delimiter = ",") {
-    let output = new Array();
+    let output = [];
     let strArray = str.split(",");
     for(let c = 0; c < strArray.length; c++){
         output[c] = parseInt(strArray[c]);
