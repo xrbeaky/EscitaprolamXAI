@@ -46,8 +46,20 @@ export default function Input(){
                 answers = {["None.","Fidgetiness.", "Playing with hands, hair, etc.", "Moving about, can't sit still.", "Hand-wringing, nail biting, hair-pulling, biting of lips."]}/>
                 <Question 
                 index = "10" 
-                question = "Anxiety Psychic"
+                question = "Psychic Anxiety"
                 answers = {["No difficulty.","Subjective tension and irritability.", "Worrying about minor matters.", "Apprehensive attitude apparent in face or speech.", "Fears expressed without questioning."]}/>
+                <Question 
+                index = "11" 
+                question = "Somatic Anxiety (physological: gastro-intestinal, cardio-vascular, respiratory, sweating)"
+                answers = {["Absent","Mild.", "Moderate.", "Severe.", "Incapacitating."]}/>
+                <Question 
+                index = "12" 
+                question = "Somatic Symptoms: Gastro-intestinal"
+                answers = {["None.","Loss of appetite but eats without encouragement. Heavy feeling in abdomen.", "Difficulty eating without urging, requests medication for gastro-intestinal symptoms."]}/>
+                <Question 
+                index = "12" 
+                question = "Somatic Symptoms: Gastro-intestinal"
+                answers = {["None.","Loss of appetite but eats without encouragement. Heavy feeling in abdomen.", "Difficulty eating without urging, requests medication for gastro-intestinal symptoms."]}/>
             </ul>
         </main>
     )
