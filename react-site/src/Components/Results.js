@@ -1,7 +1,8 @@
 import React from "react";
+import ArcProgress from 'react-arc-progress';
 import {predictRemission} from "../predictor.js"
 import { formResponses } from "./Input.js";
-export let currentPredictors = [2, 2 , 2, 2, 53, 2, 2, 2, 2 , 2, 2, 2, 2, 2, 2, 2, 2];
+export let currentPredictors = [];
 export default function Results(){
 
     //appetite,BDI_changes_sleep,rs62182022,interest_activity_dimension,HRSD_total,SCAN_fatigability,rs1392611,rs10812099,
@@ -13,15 +14,18 @@ export default function Results(){
         return currentPredictors;
     }
 
-    let prediction = (predictRemission(currentPredictors) * 100);
+    let prediction = (predictRemission(GetPredictors()) * 100);
     prediction = prediction - (prediction % 1);
 
     
     return(
         <main>
-            <h1 className = "main-title">Explanation</h1>
+            <h1 className = "main-title">Results</h1>
             <div className = "main-container">
-                <h1>{prediction + "% chance at remission."}</h1>
+                <h2 className = "main-h2">Your chance of remission after 12 weeks on escitalopram:</h2>
+                <div className = "arc-container">
+                    <ArcProgress progress = {prediction / 100} textStyle={{ size: "100px", color: "#FFFFFF", font: "Oxygen", x: 250, y: 200}}size = {500} thickness = {35} fillColor = "#C9B0F9" text ={prediction + "%"} lineCap = "square" arcStart={180} arcEnd = {360} speed = {-75}/>
+                </div> 
             </div>
         </main>
             

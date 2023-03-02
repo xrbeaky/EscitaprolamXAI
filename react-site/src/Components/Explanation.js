@@ -2,7 +2,6 @@ import React from "react";
 import {currentPredictors} from "./Results.js";
 import {explain} from "../explainer.js"
 import SimpleListVisualizer from "../Visualizers/SimpleListVisualizer.jsx";
-import BarChart from "./BarChart.js";
 import { predictRemission } from "../predictor.js";
 
 export default function Explanation(){
@@ -70,16 +69,31 @@ export default function Explanation(){
         feature16: "rs11002001",
         feature17: "rs2704022"
       }
+    
+    let largest = 0;
+    let largestEffect = 0;
+    for(let i in features){
+    const effect = Math.abs(features[i].effect);
+    if(effect > largestEffect){
+        largestEffect = effect;
+        largest = i; 
+    }
+    }
 
     return(
         <main>
             <h1 className = "main-title">Explanation</h1>
             <div className = "main-container">
-                <h1 className = "exp-h1" >{prediction + "% chance at remission."}</h1>
+                <h1 className = "exp-h1" >{prediction + "% chance of remission."}</h1>
+                <h3 className = "main-h3">{featureNames[largest] + " was your largest factor, with a SHAP value of: " + truncDecimal(largestEffect, 2)}</h3>
                 <div className = "explanation">
                     <SimpleListVisualizer features = {features} featureNames = {featureNames}/>
                 </div>     
             </div>
         </main>
     )
+}
+
+function truncDecimal(value, decimals){
+    return parseFloat(value.toFixed(decimals));
 }

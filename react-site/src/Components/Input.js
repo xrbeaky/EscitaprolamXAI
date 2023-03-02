@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import Navbar, {setIsButtonActive} from './Navbar.js';
+import React, {useState, useContext} from 'react';
+import MyContext from './MyContext';
 export let formResponses = [];
 
 export default function Input(){
+
     return(
         <main>
             <h1 className = "main-title">Input</h1>
@@ -11,7 +12,7 @@ export default function Input(){
                 <h1 className = "main-h1">Hamilton Depression Rating Scale (17 Questions)</h1>
                 <hr className = "main-divider"/>
                 <h3 className = "main-h3">This section contains the HDRS-17, a widely used clincian administered depression assessment scale.</h3>
-                <Question 
+                <Question
                 index = "1" 
                 question = "Depressed Mood (sadness, hopeless, helpless, worthless)"
                 answers = {["Absent", "These feelings indicated only on questioning.", "These feelings spontaneously reported verbally.", "Communicates feelings non-verbally, i.e. through facial expression, posture, voice, and tendency to weep.", "Patient reports virtually only these feeling states in his/her spontaneous verbal and non-verbal communication."]}/>
@@ -159,17 +160,27 @@ function Question(props)
     )
 }
 
-function setFormResponses(index, value){
-    formResponses[index] = value;
+function isFormComplete(){
+    for(let i = 0; i < formResponses.length; i++){
+        if(formResponses[i] == null){
+            return false;
+        }
+    }
+    return(formResponses.length >= 32);
 }
 
 
 function NumberInput(props)
 {
+    const {buttonsActive, handleButtonsActive} = useContext(MyContext);
     const [numberValue, setNumberValue] = useState(0);
+
     const handleNumberChange = (event) =>{
         setNumberValue(event.target.value);
-        setFormResponses(props.index -1, event.target.value);
+        formResponses[props.index - 1] = event.target.value;
+        if(isFormComplete()){
+            handleButtonsActive();
+        }
     }
     return(
         <div>
@@ -183,9 +194,14 @@ function NumberInput(props)
 
 
 function UserInput(props){
-    const handleClick = (event, i) =>{
-        setFormResponses(props.index-1, i);
+    const {buttonsActive, handleButtonsActive} = useContext(MyContext);
 
+    const handleClick = (event, i) =>{
+        
+        formResponses[props.index - 1] = i; 
+        if(isFormComplete()){
+            handleButtonsActive();
+        }
         const clickedButton = event.target;
         const buttonsInGroup = Array.from(clickedButton.parentNode.parentNode.querySelectorAll("button"));
         buttonsInGroup.forEach(button => {

@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import logo from '../react-logo.png';
+import MyContext from './MyContext';
 import {Link, useLinkClickHandler} from 'react-router-dom';
 
-export default function Navbar(){
-    const[isButtonActive, setIsButtonActive] = useState(true);
-
+export default function Navbar(props){
     useEffect(() => {
         const navbarContainer = document.querySelector(".navbar-container");
         window.addEventListener("scroll", () => {
@@ -24,12 +23,11 @@ export default function Navbar(){
                 <h3 className = "nav-logo_text">Escitalopram Remission Predictor</h3>
                 <ul className = "nav-buttons">
                     <NavButton button = "true" path = "/" text = "Input"/>
-                    <NavButton button = {isButtonActive} path = "/results" text = "Results"/>
-                    <NavButton button = {isButtonActive} path = "/explanation" text = "Why?"/>
+                    <NavButton button = {props.buttonsActive} path = "/results" text = "Results"/>
+                    <NavButton button = {props.buttonsActive} path = "/explanation" text = "Why?"/>
                 </ul>
             </nav>
         </div>
-        
     );
 }
 
