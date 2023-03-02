@@ -24,8 +24,11 @@ export default function Results(){
             <div className = "main-container">
                 <h2 className = "main-h2">Your chance of remission after 12 weeks on escitalopram:</h2>
                 <div className = "arc-container">
-                    <ArcProgress progress = {prediction / 100} textStyle={{ size: "100px", color: "#FFFFFF", font: "Oxygen", x: 250, y: 200}}size = {500} thickness = {35} fillColor = "#C9B0F9" text ={prediction + "%"} lineCap = "square" arcStart={180} arcEnd = {360} speed = {-75}/>
+                    <ArcProgress progress = {prediction / 100} textStyle={{ size: "100px", color: "#FFFFFF", font: "Oxygen", x: 250, y: 200}}size = {500} thickness = {35} fillColor = "#C9B0F9" emptyColor = "#313236" text ={prediction + "%"} lineCap = "square" arcStart={180} arcEnd = {360} speed = {-75}/>
                 </div> 
+                <p className = "results-p">This program uses an <u>elastic net logistic regression</u> model that predicted remission in the training dataset with an area under curve (AUC) of 0.77, sensitivity of 0.67, specificity of 0.71 <a href = "https://www.nature.com/articles/s41598-018-23584-z">(Iniesta et al., 2018).</a></p>
+                <p className = "results-p">About 40 to 60 out of 100 people notice symptom reduction after 8 weeks on any given antidepressant <a href = "https://www.ncbi.nlm.nih.gov/books/NBK361016/">(Informed Health, 2020)</a>. This model with an AUC of 0.77 is, generally, more reliable than a psychiatrist's prescription. However, the model has limitations, and its prediction should only be treated as a suggestion. </p>
+                <p className = "results-p">The model was trained on data from the Genome-based Therapeutic Drugs for Depression (GENDEP) study <a href ="https://cordis.europa.eu/project/id/503428/reporting">(Institutue of Psychiatry, 2008)</a>, a large-scale human pharmacogenomics study focused on identifying biomarkers for antidepressant response.</p>
             </div>
         </main>
             

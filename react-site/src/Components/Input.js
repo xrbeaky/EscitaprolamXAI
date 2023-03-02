@@ -184,7 +184,7 @@ function NumberInput(props)
     }
     return(
         <div>
-            <h2>{props.index}. {props.question} <a href="https://google.com">Link to Study</a></h2>
+            <h2>{props.index}. {props.question} <a href="https://pubmed.ncbi.nlm.nih.gov/21929846/">Link to Study</a></h2>
             <div className = "input-list">
                 <input className = "input-number" type = "number" value={numberValue} onChange={handleNumberChange}/>
             </div>
