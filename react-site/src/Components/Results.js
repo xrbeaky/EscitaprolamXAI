@@ -29,8 +29,15 @@ export default function Results(){
                 <p className = "results-p">This program uses an <u>elastic net logistic regression</u> model trained on data from the Genome-based Therapeutic Drugs for Depression (GENDEP) study <a href ="https://cordis.europa.eu/project/id/503428/reporting">(Institutue of Psychiatry, 2008)</a>, a large-scale human pharmacogenomics study focused on identifying biomarkers for antidepressant response.</p>
                 <p className = "results-p">The model predicted remission in the training dataset with an area under curve (AUC) of 0.77, sensitivity of 0.67, specificity of 0.71 <a href = "https://www.nature.com/articles/s41598-018-23584-z">(Iniesta et al., 2018).</a></p>
                 <hr className = "main-divider"/>
-                <p className = "results-p">About 40 to 60 out of 100 people notice symptom reduction after 8 weeks on any given antidepressant <a href = "https://www.ncbi.nlm.nih.gov/books/NBK361016/">(Informed Health, 2020)</a>. This model with an AUC of 0.77 is, generally, more reliable than a psychiatrist's prescription. However, the model has limitations, and its prediction should only be treated as a suggestion. </p>
-                <p className = "results-p">Although the model is a reliable suggestion, it only reflects the effects of escitalopram before 12 weeks.</p>
+                <h2 style = {{margin:"auto", textAlign : "center", paddingBottom: "15px"}}>What next?</h2>
+                <p className = "results-p">About 40 to 60 out of 100 people notice symptom reduction after 8 weeks on any given antidepressant <a href = "https://www.ncbi.nlm.nih.gov/books/NBK361016/">(Informed Health, 2020)</a>. This model with an AUC of 0.77 is, generally, more reliable than the average prescription.</p>
+                <p className = "results-p">This model serves only as an aid; a clinician's assessment should be the primary factor in your treatment decision.</p>
+                <p className = "results-p">Note: model does consider family medical history. Patients with family history of escitalopram response/non-response may see different results. Also, symptoms after 12 weeks are not represented by this prediction.</p> 
+                <hr className = "main-divider"/>
+                <h2 style = {{margin:"auto", textAlign : "center", paddingBottom: "15px"}}>Risks</h2>
+                <p className = "results-p">Some people may experience side effects of varying intensities. Side effects may improve over time. Consult your clinican before making a decision.</p>
+                <p className = "results-p">Common side effects include: nausea, headaches, dry mouth, insomnia, drowsiness.</p>
+                <p className = "results-p">Serious side effects (book appointment with doctor): weight gain/loss, menstrual changes, long cramps, coughing up blood, bloody stool, high temperature and agitation, worsening bruises.</p>
             </div>
         </main>
             

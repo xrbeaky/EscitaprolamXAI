@@ -291,17 +291,31 @@ main{
     padding-bottom: 20px;
 }
 
-.progress-bar {
+.progress-bar-right {
     width: 100%;
-    height: 20px;
+    height: 24px;
     background-color:#313236 ;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     overflow: hidden;
   }
+
+  .progress-bar-left {
+    width: 100%;
+    height: 24px;
+    background-color:#313236 ;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transform: scaleX(-1);
+  }
   
-  .progress{
+  .progress-right{
     display: inline-block;
     height: 100%;
-    background-color: rgb(201, 176, 249);
-    transition: width 0.5s ease-in-out;
+    background-color: #1E88E5;
+    transform:scaleX(1);
+  }
+  .progress-left{
+    display: inline-block;
+    height: 100%;
+    background-color: #FF0D57;
   }

@@ -23,8 +23,8 @@ export default function Navbar(props){
                 <h3 className = "nav-logo_text">Escitalopram Remission Predictor</h3>
                 <ul className = "nav-buttons">
                     <NavButton button = "true" path = "/" text = "Input"/>
-                    <NavButton button = {!props.buttonsActive} path = "/results" text = "Results"/>
-                    <NavButton button = {!props.buttonsActive} path = "/explanation" text = "Why?"/>
+                    <NavButton button = {props.buttonsActive} path = "/results" text = "Results"/>
+                    <NavButton button = {props.buttonsActive} path = "/explanation" text = "Why?"/>
                 </ul>
             </nav>
         </div>

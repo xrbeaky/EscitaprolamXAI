@@ -73,13 +73,19 @@ export default function Explanation(){
     
     let largest = 0;
     let largestEffect = 0;
+    let shapSum = 0;
+    let shapMax = 0;
     for(let i in features){
-    const effect = Math.abs(features[i].effect);
-    if(effect > largestEffect){
-        largestEffect = effect;
-        largest = i; 
+        shapSum += features[i].effect;
+        shapMax += Math.abs(features[i].effect);
+        const effect = Math.abs(features[i].effect);
+        if(effect > largestEffect){
+            largestEffect = effect;
+            largest = i; 
+        }
     }
-    }
+
+    console.log(shapSum);
 
     return(
         <main>
@@ -87,7 +93,7 @@ export default function Explanation(){
             <div className = "main-container">
                 <h1 className = "exp-h1" >{prediction + "% chance of remission."}</h1>
                 <h3 className = "main-h3">{featureNames[largest] + " was your largest factor, with a SHAP value of: " + truncDecimal(largestEffect, 2)}</h3>
-                <ProgressBar input = {10}/>
+                <ProgressBar input = {(shapMax /shapSum) * 10}/>
                 <div className = "explanation">
                     <SimpleListVisualizer features = {features} featureNames = {featureNames}/>
                 </div>
