@@ -42,7 +42,7 @@ export default function Input(){
                 answers = {["No difficulty.","Thoughts and feelings of incapacity, fatigue, or weakness.", "Loss of interest in activities, hobbies, or work (feels they have to push themselves).", "Decrease in actual time spent or decrease in productivity. Less than 3 hours a day doing work or hobbies.", "Stopped working because of illness, little to no activities."]}/>
                 <Question 
                 index = "8" 
-                question = "Mental Abilities (thought and speech, concentration, motor activity)"
+                question = "Mental Function (thought and speech, concentration, motor activity)"
                 answers = {["Normal speech and thought.","Slight decrease in function during interview.", "Obvious decrease in function during interview.", "Interview difficult.", "Complete stupor."]}/>           
                 <Question 
                 index = "9" 
@@ -50,7 +50,7 @@ export default function Input(){
                 answers = {["None.","Fidgetiness.", "Playing with hands, hair, etc.", "Moving about, can't sit still.", "Hand-wringing, nail biting, hair-pulling, biting of lips."]}/>
                 <Question 
                 index = "10" 
-                question = "Psychic Anxiety"
+                question = "Psychological Anxiety"
                 answers = {["No difficulty.","Subjective tension and irritability.", "Worrying about minor matters.", "Apprehensive attitude apparent in face or speech.", "Fears expressed without questioning."]}/>
                 <Question 
                 index = "11" 
@@ -66,7 +66,7 @@ export default function Input(){
                 answers = {["None.","Heaviness in limbs, back, or head. Backaches, headaches, muscle aches. Lack of energy.", "Any distinct symptom."]}/>
                 <Question 
                 index = "14" 
-                question = "Genital Symptoms (loss of libido, menstrual disturbances, etc.)"
+                question = "Reproductive Symptoms (loss of libido, menstrual disturbances, etc.)"
                 answers = {["Absent.","Mild.", "Severe."]}/>
                 <Question 
                 index = "15" 
@@ -92,13 +92,13 @@ export default function Input(){
                 answers = {["No fatigability.","Minor.","Present", "Severe."]}/>
                 <NumberInput 
                 index = "20"
-                question = "Enter your interest-activity dimension score from: "/>
+                question = "Enter your 'interest-activity' dimension score from: "/>
                 <NumberInput 
                 index = "21"
                 question = "Enter your 'appetite' dimension score from: "/>
                 <h1 className = "main-h1">Genetic Factors (11 Questions)</h1>
                 <hr className = "main-divider"/>
-                <h3 className = "main-h3">Select your single nucleotide polymorphism variants for the following:</h3>
+                <h3 className = "main-h3">Select your single nucleotide polymorphism (SNP) variants for the following, often gathered using an SNP Chip:</h3>
                 <Question 
                 index = "22" 
                 question = "rs1392611"

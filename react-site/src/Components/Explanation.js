@@ -1,5 +1,6 @@
 import React from "react";
 import {currentPredictors} from "./Results.js";
+import {ProgressBar} from "./ProgressBar.js";
 import {explain} from "../explainer.js"
 import SimpleListVisualizer from "../Visualizers/SimpleListVisualizer.jsx";
 import { predictRemission } from "../predictor.js";
@@ -86,9 +87,12 @@ export default function Explanation(){
             <div className = "main-container">
                 <h1 className = "exp-h1" >{prediction + "% chance of remission."}</h1>
                 <h3 className = "main-h3">{featureNames[largest] + " was your largest factor, with a SHAP value of: " + truncDecimal(largestEffect, 2)}</h3>
+                <ProgressBar input = {10}/>
                 <div className = "explanation">
                     <SimpleListVisualizer features = {features} featureNames = {featureNames}/>
-                </div>     
+                </div>
+                <h2 className = "main-h2">Note: these values are not probabilities.</h2>  
+                <h3 className = "main-h3">The SHapley Additive exPlanations (SHAP) values represent the log odds. The values are additive, with negative values (red) decreasing your chance of remission and positive (blue) values increasing your chance of remission.</h3>     
             </div>
         </main>
     )
